@@ -17,10 +17,16 @@ const app = express();
 // ---------------- CONFIG ----------------
 app.use(
   cors({
-    origin: true,
-    credentials: true
+    origin: "http://localhost:5173",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+// Preflight allow
+app.options("*", cors());
+
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(cookieParser());
@@ -51,6 +57,11 @@ app.use("/api/contact-requests", contactRequestRoutes);
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).json({ message: "Server error" });
+});
+
+// Home route
+app.get("/", (req, res) => {
+  res.send("Welcome to Home Page");
 });
 
 // ---------------- START SERVER ----------------
