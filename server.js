@@ -23,7 +23,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://backend-ebon-eight-39.vercel.app",
-      "frontend-orcin-gamma-46.vercel.app"
+      "https://frontend-orcin-gamma-46.vercel.app",
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
