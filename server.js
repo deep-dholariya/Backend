@@ -14,6 +14,9 @@ import contactRequestRoutes from "./routes/contactRequestRoutes.js";
 dotenv.config();
 const app = express();
 
+// 🔥 REQUIRED FOR VERCEL
+app.set("trust proxy", 1);
+
 // ---------------- CONFIG ----------------
 app.use(
   cors({
